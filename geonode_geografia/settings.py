@@ -345,7 +345,7 @@ if MONITORING_ENABLED:
     MONITORING_SERVICE_NAME = 'local-geonode'
     MONITORING_HOST_NAME = SITE_HOST_NAME
 
-INSTALLED_APPS += ('geonode.contrib.ows_api',)
+# INSTALLED_APPS += ('geonode.contrib.ows_api',)
 
 GEOIP_PATH = os.path.join(os.path.dirname(__file__), '..', 'GeoLiteCity.dat')
 
@@ -389,7 +389,7 @@ LOGGING = {
         "gsconfig.catalog": {
             "handlers": ["console"], "level": "INFO", },
         "owslib": {
-            "handlers": ["console"], "level": "INFO", },
+            "handlers": ["console"], "level": "DEBUG", },
         "pycsw": {
             "handlers": ["console"], "level": "INFO", },
         "geonode_geografia": {
