@@ -60,6 +60,7 @@ TIME_ZONE = os.getenv('TIME_ZONE', "America/Chicago")
 USE_TZ = True
 
 INSTALLED_APPS += ('geonode', PROJECT_NAME,)
+INSTALLED_APPS += ('jet',)
 
 # Location of url mappings
 ROOT_URLCONF = os.getenv('ROOT_URLCONF', '{}.urls'.format(PROJECT_NAME))
@@ -85,6 +86,8 @@ loaders = TEMPLATES[0]['OPTIONS'].get('loaders') or ['django.template.loaders.fi
 # loaders.insert(0, 'apptemplates.Loader')
 TEMPLATES[0]['OPTIONS']['loaders'] = loaders
 TEMPLATES[0].pop('APP_DIRS', None)
+TEMPLATES[0]['OPTIONS']['context_processors'].append('django.template.context_processors.request')
+
 
 CLIENT_RESULTS_LIMIT = 20
 API_LIMIT_PER_PAGE = 1000
