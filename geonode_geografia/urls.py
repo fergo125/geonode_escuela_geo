@@ -26,7 +26,8 @@ from geonode.urls import urlpatterns
 urlpatterns += (
 ## include your urls here
 	url(r'^jet/', include('jet.urls', 'jet')),  # Django JET URLS
-    url(r'^admin/', include(admin.site.urls)),
+	url(r'^quienes_somos/?$',TemplateView.as_view(template_name='quienes_somos.html'), name='quienes_somos'), 
+	url(r'^contacto/?$',TemplateView.as_view(template_name='contacto.html'), name='contacto')
 )
 
 urlpatterns = patterns('',

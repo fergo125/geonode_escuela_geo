@@ -33,6 +33,8 @@ PROJECT_NAME = 'geonode_geografia'
 
 SITENAME = 'geonode_geografia'
 
+LANGUAGE_CODE = 'es'
+
 # Defines the directory that contains the settings file as the LOCAL_ROOT
 # It is used for relative settings elsewhere.
 LOCAL_ROOT = os.path.abspath(os.path.dirname(__file__))
