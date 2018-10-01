@@ -19,7 +19,7 @@
 	      </button>
 	    </div>
 	    <div id="navbar" class="navbar-collapse collapse">
-	      <ul class="nav navbar-nav toolbar">
+	      <ul class="nav navbar-nav toolbar custom-menu">
 	        {% block tabs %}
 	        <li id="nav_layers">
 				<a href="{% url "layer_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">{% trans "Layers" %}{% if user.is_authenticated %}<i class="fa fa-angle-down fa-lg"></i>{% endif %}</a>
@@ -93,5 +93,63 @@
           </div> <!--/.nav-collapse -->
         </div>
       </nav>
-{% endblock header %}
+{% endblock header %}	
 
+{% block footer %}
+<footer>
+  <div class="container">
+	<div class="row">
+	  <div class="col-md-2">
+		<ul class="list-unstyled">
+		  <li>Data</li>
+		  <li><a href="{% url "layer_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">{% trans "Layers" %}</a></li>
+		  {% if user.is_authenticated %}
+			  <li role="separator" class="divider"></li>
+			  <li><a href="{% url "layer_upload" %}">Upload Layer</a></li>
+			  {% if 'geonode.contrib.createlayer' in INSTALLED_APPS %}
+				  <li><a href="{% url "layer_create" %}">{% trans "Create Layer" %}</a></li>
+			  {% endif %}
+			  <li><a href="{% url "document_upload" %}">Upload Document</a></li>
+		  {% endif %}
+		  {% if user.is_superuser or user.is_staff %}
+			  <li><a href="{% url "register_service" %}">{% trans "Add Remote Service" %}</a></li>
+		  {% endif %}
+		</ul>
+	  </div>
+	  <div class="col-md-2">
+		<ul class="list-unstyled">
+		  <li>Mapas</li>
+		  <li><a href="{% url "maps_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">{% trans "Explore Maps" %}</a></li>
+		  {% if user.is_authenticated %}
+		  <li> <a href="{% url "new_map" %}">{% trans "Create Map" %}</a></li>
+		  {% endif %}
+		</ul>
+	  </div>
+	  <div class="col-md-2">
+		<ul class="list-unstyled">
+		  <li>Acerca de</li>
+		  <li><a href="{% url "quienes_somos" %}">¿Quienes Somos?</a></li>
+		  <li><a href="{% url "contacto" %}">Contacto</a></li>
+		  {% if perms.announcements.can_manage %}
+		  <li><a href="{% url "announcements_list" %}">{% trans "Announcements" %}</a></li>
+		  {% endif %}
+		  {% if user.is_superuser %}
+		  <li><a href="/admin/people/profile/add/">{% trans "Add User" %}</a></li>
+		  <li><a href="{% url "group_create" %}">{% trans "Create Group" %}</a></li>
+		  {% endif %}
+		</ul>
+	  </div>
+
+	  <div class="col-md-6 text-right">
+		{% block contactus %}
+		{% endblock contactus %}
+		<ul class="list-unstyled">
+		  <li>{% trans "Powered by" %} <a href="http://geonode.org">{% trans "GeoNode" %}</a> <em>{% trans "version" %} {{ VERSION }}</em></li>
+		  <li><a href="{% url "developer" %}">{% trans "Developers" %}</a> | <a href="{% url "quienes_somos" %}">{% trans "About" %}</a><li>
+		</ul>
+		
+	  </div>
+	</div>
+  </div>
+</footer>
+{% endblock footer %}
