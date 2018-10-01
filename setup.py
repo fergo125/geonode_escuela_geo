@@ -22,6 +22,7 @@ import os
 from distutils.core import setup
 
 def read(*rnames):
+    print(os.path.join(os.path.dirname(__file__), *rnames))
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
 setup(

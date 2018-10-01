@@ -248,7 +248,7 @@ def _install_data_dir():
 
 @task
 def static(options):
-    with pushd('geonode/static'):
+    with pushd('geonode_geografia/static'):
         sh('grunt production')
 
 

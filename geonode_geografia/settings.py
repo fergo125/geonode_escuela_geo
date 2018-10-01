@@ -41,9 +41,11 @@ LOCAL_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 WSGI_APPLICATION = "{}.wsgi.application".format(PROJECT_NAME)
 
-ALLOWED_HOSTS = ['localhost', 'django'] if os.getenv('ALLOWED_HOSTS') is None \
-    else re.split(r' *[,|:|;] *', os.getenv('ALLOWED_HOSTS'))
+#ALLOWED_HOSTS = ['localhost', 'django'] if os.getenv('ALLOWED_HOSTS') is None \
+ #   else re.split(r' *[,|:|;] *', os.getenv('ALLOWED_HOSTS'))
 
+ALLOWED_HOSTS = ['163.178.170.215','localhost']
+HTTP_HOST = ['163.178.170.215']
 PROXY_ALLOWED_HOSTS += ('nominatim.openstreetmap.org',)
 
 # AUTH_IP_WHITELIST property limits access to users/groups REST endpoints
@@ -74,9 +76,7 @@ STATIC_ROOT = os.getenv('STATIC_ROOT',
                         )
 
 # Additional directories which hold static files
-STATICFILES_DIRS.append(
-    os.path.join(LOCAL_ROOT, "static"),
-)
+\
 
 # Location of locale files
 LOCALE_PATHS = (
